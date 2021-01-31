@@ -1,0 +1,55 @@
+<div class="fondo fondo-product">
+   <h1 class="title-Page altura-Page">{{Page}}</h1>
+</div>
+<section>
+    <!--Categoria generales-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 my-3">
+                <!--categorias-->
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="my-5">Categories</h2>
+                        <ul class="">
+                            <li><a href="/products/all">All Products</a></li>
+                            {{#each categories}}
+                            <li><a href="/products/category/{{slug}}">{{title}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--end categorias-->
+            <div class="col-md-9">
+                <div class="row">
+                    {{#each products}}
+                    <!--productos-->
+                    <div class="col-md-4 my-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-header">
+                                    <div>
+                                        <a href="/products/view/{{_id}}">
+                                           <div><img src="/{{path}}" alt=""></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="h3-product-all">{{title}}</h3>
+                                    <p  class="price-product-all">{{price}} <i class='bx bx-dollar'></i></p>
+                                    <p  class="category-product-all">Category: {{category}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/products/view/{{_id}}" class="btn-client">View Deatils</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    <!--end productos-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+</section>

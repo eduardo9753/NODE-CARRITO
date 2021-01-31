@@ -1,0 +1,64 @@
+/*ESTILOS CKECKOUT*/
+.img-fondo{
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url(../img/fondo-header.jpg);
+  height: 35vh;
+}
+
+.altura-Page {
+    padding-top: 8%;
+}
+.btn-clear-cart , .btn-buy-now{
+    display: block;
+    color: #ffffff;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Brandow Text Boid';
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.btn-clear-cart:hover , .btn-buy-now:hover{
+    color: #ffffff;
+    text-decoration: none;
+    transform: scale(1.05);
+    font-family: 'Brandow Text Boid';
+}
+
+.color-red { background-color: #a62b2b;}
+.color-yellow { background-color: orange;}
+
+
+.border-total-checkout{
+  border: 1px solid green;
+  text-align: center;
+  padding: 5px;
+}
+
+.flex-checkout{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.btn-block{
+    display: block;
+    padding: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.color-icon{color: #ffffff;}
+
+.list-checkout .btn-add{ background-color: #27AE60;}
+.list-checkout .btn-add:hover .color-icon{transform: scale(1.3);}
+
+.list-checkout .btn-remove{ background-color: #F1C40F;}
+.list-checkout .btn-remove:hover .color-icon{transform: scale(1.4);}
+
+.list-checkout .btn-clear{ background-color: #C0392B;line-height: 1.6;padding-left: 10px;}
+.list-checkout .btn-clear:hover .color-icon{ transform: scale(1.3);}

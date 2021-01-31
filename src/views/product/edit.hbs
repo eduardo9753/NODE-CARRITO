@@ -1,0 +1,54 @@
+<section>
+    <div class="container">
+        <h2 class="text-center">Update Product</h2>
+        <div class="text-center mt-5"><a href="/product/products" class="btn btn-primary">Back a all Product</a></div>
+        <br><br>
+        <div class="card">
+            <div class="card-body">
+                <form action="/product/products/update/{{dataEdit._id}}" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group my-3">
+                                <label for="">Title</label>
+                                <input type="text" name="title" value="{{dataEdit.title}}" class="form-control" id="">
+                            </div>
+                            <div class="form-group my-3">
+                                <label for="">Description</label>
+                                <textarea name="description" id="" class="form-control">{{dataEdit.desc}}</textarea>
+                            </div>
+                            <div class="form-group my-3">
+                                <label for="">Category</label>
+                                <select name="category" class="form-control" id="">
+                                    {{#each dataCategory}}
+                                    <option value="{{slug}}">{{title}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="form-group my-3">
+                                <label for="">Price</label>
+                                <input type="text" name="price" value="{{dataEdit.price}}" class="form-control" id="">
+                            </div>
+                            <div class="form-group my-3">
+                                <label for="">New Image</label>
+                                <input type="file" name="imageProduct" accept="image/gif, image/png, image/jpeg"
+                                    class="form-control" id="img">
+                                <img src="" id="imgPreview" alt="imgPreview">
+                            </div>
+                            <div class="form-group my-3">
+                                <input type="submit" class="btn btn-success" value="Update" name="" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-4 card">
+                            <div class="card-body">
+                                <p class="lead pt-3">Tu Imagen Actual</p>
+                                <img src="/{{dataEdit.path}}" class="imgProductUpdate" alt="My Image">
+                                <input type="hidden" name="originalNameNativo" value="{{dataEdit.image}}">
+                                <input type="hidden" name="imgNativa" value="{{dataEdit.path}}">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

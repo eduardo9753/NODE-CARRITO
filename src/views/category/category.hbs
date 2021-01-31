@@ -1,0 +1,37 @@
+<section>
+    <div class="container">
+        <h2>Category</h2>
+        <div class="text-center mt-5"><a href="/category/categories/add" class="btn btn-primary">Add new Category</a></div>
+        <br><br>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-md-12 mx-auto">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each dataCategory}}
+                                <tr>
+                                    <td>{{title}}</td>
+                                    <td><a href="/category/categories/edit/{{_id}}" class="btn btn-warning">Edit</a></td>
+                                    <td>
+                                      <form action="/category/categories/delete/{{_id}}?_method=DELETE" method="POST">
+                                         <input type="submit" value="Delete" class="btn btn-danger">
+                                      </form>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

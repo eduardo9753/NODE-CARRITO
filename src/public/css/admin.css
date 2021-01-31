@@ -1,0 +1,25 @@
+*,*::after,*::before{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.sorting tr:not(.home){ cursor: pointer;}
+.ui-state-hightlight{ border: 1px dashed #ccc;}
+
+/*VISTA DE LA IMG PREVIA*/
+#imgPreview{
+   padding: 20px;
+}
+
+/*ESTILOS PARA LA IMG PRODUCT*/
+.imgProduct{
+    width: 35px;
+    height: 35px;
+}
+
+.imgProductUpdate{
+    width: 100%;
+    height: 200px;
+}

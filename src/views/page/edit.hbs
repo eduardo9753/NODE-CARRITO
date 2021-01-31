@@ -1,0 +1,31 @@
+<section>
+    <div class="container">
+        <div class="text-center mt-5"><a href="/page/pages" class="btn btn-primary">Back a all Pages</a></div>
+        <br><br>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/pages/update/{{dataEdit._id}}" method="POST">
+                            <div class="form-group my-3">
+                                <label for="">Title</label>
+                                <input type="text" name="title" value="{{dataEdit.title}}" class="form-control" id="">
+                            </div>
+                             <div class="form-group my-3">
+                                <label for="">Slug</label>
+                                <input type="text" name="slug" value="{{dataEdit.slug}}" class="form-control" id="">
+                            </div>
+                             <div class="form-group my-3">
+                                <label for="">Content</label>
+                                <textarea name="content" id="ta" value="" class="form-control">{{dataEdit.content}}</textarea>
+                            </div>
+                             <div class="form-group my-3">
+                                <input type="submit" class="btn btn-success" name="" value="Update" id="">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+<section>
+    <div class="container">
+        <h2>Producto</h2>
+        <div class="text-center mt-5"><a href="/product/products/add" class="btn btn-primary">Add new Product</a></div>
+        <br><br>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <div class="col-md-12 mx-auto">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Slug</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Image Nombre</th>
+                                    <th>Image</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each dataProduct}}
+                                <tr>
+                                    <td>{{title}}</td>
+                                    <td>{{slug}}</td>
+                                    <td>{{desc}}</td>
+                                    <td>{{category}}</td>
+                                    <td>{{price}}</td>
+                                    <td>{{image}}</td>
+                                    <td><img src="/{{path}}" class="imgProduct" alt="My Image"></td>
+                                    <td>
+                                        <a href="/product/products/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                                    </td>
+                                    <td>
+                                      <form action="/product/products/delete/{{_id}}?_method=DELETE" method="POST">
+                                         <input type="submit" value="Delete" class="btn btn-danger">
+                                      </form>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

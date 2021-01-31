@@ -1,0 +1,32 @@
+<div class="fondo fondo-product">
+   <h1 class="title-Page altura-Page">{{Page}}</h1>
+</div>
+<section>
+    <div class="container">
+        <div>
+            <h2 class="my-3 animacion-h1-product-view">Your Product</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3 class="h3-product-all">{{product.title}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="price-product-all">{{product.price}} <i class='bx bx-dollar'></i></p>
+                            <p class="category-product-all">Category: {{product.category}}</p>
+                            <p class="description-product-view">{{product.desc}}</p>
+                        </div>
+                        <div class="card-header">
+                            <a href="/product/cart/add/{{product.slug}}" class="btn-client">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <img src="/{{product.path}}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
