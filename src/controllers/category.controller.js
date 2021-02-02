@@ -8,16 +8,16 @@ categoryController.index = async (req, res) => {
   try {
     const dataCategory = await Category.find({}).lean();
     console.log('DATA CATEGORY DB:' , dataCategory);
-    let Page = 'Categories';
-    const modeView = { dataCategory , Page };
-    res.render('category/category.hbs' , modeView);
+    let Pagina = 'Categories';
+    const modeView = { dataCategory , Pagina };
+    res.render('admin/category/category.hbs' , modeView);
   } catch (error) {
     console.error(error);
   }
 }
 
 categoryController.form = (req , res) => {
-    res.render('category/add.hbs' , { Page : 'Form Categories' });
+    res.render('admin/category/add.hbs' , { Pagina : 'Form Categories' });
 }
 
 categoryController.formAdd = async (req , res) => {
@@ -28,10 +28,10 @@ categoryController.formAdd = async (req , res) => {
     const result     = await categories.save();
     if(result){
         req.flash('success' , 'Correcto :)');
-        res.redirect('/category/categories');
+        res.redirect('/admin/category/categories');
     }else{
         req.flash('error' , 'Error :(');
-        res.redirect('/category/categories');
+        res.redirect('/admin/category/categories');
     }
   } catch (error) {
     console.error(error);
@@ -44,7 +44,7 @@ categoryController.edit = async (req , res) => {
     const id = req.params.id;
     console.log('ID EDIT CATEGORY:' , id);
     const dataEdit = await Category.findOne( {_id : id }).lean();
-    res.render('category/edit.hbs' , { dataEdit : dataEdit });
+    res.render('admin/category/edit.hbs' , { dataEdit : dataEdit });
   } catch (error) {
     console.error(error);
   }
@@ -62,10 +62,10 @@ categoryController.edit = async (req , res) => {
      });
      if(correct){
        req.flash('success' , 'Correcto :)');
-       res.redirect('/category/categories');
+       res.redirect('/admin/category/categories');
      }else{
        req.flash('error' , 'Hubo un error en la Actualizacion');
-       res.render('/category/categories');
+       res.redirect('/admin/category/categories');
      }
   } catch (error) {
     console.error(error);
@@ -80,10 +80,10 @@ categoryController.edit = async (req , res) => {
     const drop = await Category.findByIdAndDelete({_id : id });
     if(drop){
       req.flash('success' , 'Correcto Delete :)');
-      res.redirect('/category/categories');
+      res.redirect('/admin/category/categories');
     }else{
       req.flash('error' , 'Hubo un error en la Eiminacion');
-      res.redirect('/category/categories')
+      res.redirect('/admin/category/categories')
     }
   } catch (error) {
     console.error(error);

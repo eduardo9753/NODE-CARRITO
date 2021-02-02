@@ -4,7 +4,9 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-
+.img-usuario{  margin: 0 auto;
+  width: 110px;
+  height: 110px;text-align: center;}
 
 img{ width: 100%; height: 100%; object-fit: cover; vertical-align: middle;}
 a{text-decoration: none;}
@@ -113,7 +115,8 @@ ul{list-style: none;}
 }
 
 
-/********ESTILOS PRODUCTOS********/
+
+/********ESTILOS PRODUCTOS ALL********/
 .h3-product-all{
   font-family: "Brandow Text Boid";
   font-size: 20px;
@@ -132,6 +135,7 @@ ul{list-style: none;}
   font-family: "Brandow Text Boid";
   font-weight: bold;
 }
+
 
 
 /********ESTILOS PRODUCT VIEW********/
@@ -162,22 +166,66 @@ ul{list-style: none;}
 }
 
 
+
 /********FONDO USER SIGNIN-SIGNUP********/
 .img-user{
   background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)) , url(../img/fondo-user.jpg);
-  height: 40vh;
+  height: 35vh;
 }
 .altura-Page{
   padding-top: 8%;
 }
 
+
+
 /*********FONDO PRODUCT ALL**********/
 .fondo-product{
   background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.4)) , url(../img/fondo-product.jpg);
-  height: 40vh;
+  height: 35vh;
 }
 
 /********ESTILOS FOOTER********/
 .margin-top{
   margin-top: 10px;
 }
+
+
+
+/**********************ESTILOS ADMIN-LOGIN*******************************/
+.fondo-login{
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.7)) , url(../img/fondo-login.jpg);
+  height: 100vh;
+}
+.position-middle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  transform: translate(-50%,-50%);
+}
+.color-white{
+  background-color: rgba(235, 224, 224, 0.4);
+}
+
+.input-admin{
+  background-color: rgba(0,0,0,0.4);
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  border: none;
+}
+
+.input-submit{
+  border: none;
+  width: 300px;
+  background-color: rgba(233, 17, 204, 0.4);
+  padding: 10px;
+  color: #ffffff;
+  transition: all .2s ease-in-out;
+}
+.input-submit:hover{background-color: rgba(233, 17, 204, 0.6);}

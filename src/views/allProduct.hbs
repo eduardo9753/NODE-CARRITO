@@ -1,7 +1,7 @@
 <div class="fondo fondo-product">
    <h1 class="title-Page altura-Page">{{Page}}</h1>
 </div>
-<section>
+<section class="mb-5">
     <!--Categoria generales-->
     <div class="container">
         <div class="row">
@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h2 class="my-5">Categories</h2>
                         <ul class="">
-                            <li><a href="/products/all">All Products</a></li>
+                            <li><a href="/products/all/1">All Products</a></li>
                             {{#each categories}}
                             <li><a href="/products/category/{{slug}}">{{title}}</a></li>
                             {{/each}}
@@ -22,8 +22,7 @@
             <!--end categorias-->
             <div class="col-md-9">
                 <div class="row">
-                    {{#each products}}
-                    <!--productos-->
+                    {{#each products}}<!--productos-->
                     <div class="col-md-4 my-3">
                         <div class="card">
                             <div class="card-body">
@@ -45,8 +44,21 @@
                             </div>
                         </div>
                     </div>
-                    {{/each}}
-                    <!--end productos-->
+                    {{else}}
+                    <div>
+                        <p class="text-center">Sin registros</p>
+                        <a href="/products/all/1" class="btn-client">Ir Al comienzo</a>
+                    </div>
+                    {{/each}}<!--end productos-->
+                    {{#if paginas}}
+                    <nav class="Page navigation example">
+                        <ul class="pagination">
+                            {{{firtPagina current}}}
+                            {{{paginationProduct current paginas}}}
+                            {{{lastPagina current paginas}}}
+                        </ul>
+                    </nav>
+                    {{/if}}
                 </div>
             </div>
         </div>

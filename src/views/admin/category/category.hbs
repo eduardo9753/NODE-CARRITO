@@ -1,7 +1,7 @@
 <section>
     <div class="container">
-        <h2>Page</h2>
-        <div class="text-center mt-5"><a href="/pages/add" class="btn btn-primary">Add new Page</a></div>
+        <h2>Category</h2>
+        <div class="text-center mt-5"><a href="/admin/category/categories/add" class="btn btn-primary">Add new Category</a></div>
         <br><br>
         <div class="row">
             <div class="card">
@@ -16,12 +16,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{#each dataSlug}}
-                                <tr id="id_{{_id}}" class="{{slug}}">
+                                {{#each dataCategory}}
+                                <tr>
                                     <td>{{title}}</td>
-                                    <td><a href="/pages/edit/{{_id}}" class="btn btn-warning">Edit</a></td>
+                                    <td><a href="/admin/category/categories/edit/{{_id}}" class="btn btn-warning">Edit</a></td>
                                     <td>
-                                      <form action="/pages/delete/{{_id}}?_method=DELETE" method="POST">
+                                      <form action="/admin/category/categories/delete/{{_id}}?_method=DELETE" method="POST">
                                          <input type="submit" value="Delete" class="btn btn-danger">
                                       </form>
                                     </td>
@@ -35,15 +35,3 @@
         </div>
     </div>
 </section>
-
-<script>
-    $('tbody').sortable({
-       item : "tr:not('.home')",
-       placeholder : "ui-state-hightligth",
-       update : function() {
-           let ids = $('tbody').sortable("serialize");
-           let url = "/pages/reorder-pages";
-           $.post(url , ids);
-       }
-    });
-</script>

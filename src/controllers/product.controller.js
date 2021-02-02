@@ -13,9 +13,9 @@ productController.index = async (req, res) => {
   try {
     const dataProduct = await Product.find({}).lean();
     console.log("DATA PRODUCTS :", dataProduct);
-    let Page = 'home';
-    const viewModel = {Page ,dataProduct };
-    res.render("product/product.hbs", viewModel);
+    let Pagina = 'home';
+    const viewModel = {Pagina ,dataProduct };
+    res.render("admin/product/product.hbs", viewModel);
   } catch (error) {
     console.error(error);
   }
@@ -24,9 +24,9 @@ productController.index = async (req, res) => {
 productController.form = async (req, res) => {
   try {
     const dataCategory = await Category.find({}).lean();
-    let Page = 'Form Product'
-    const viewModel = {Page , dataCategory};
-    res.render("product/add.hbs", viewModel);
+    let Pagina = 'Form Product'
+    const viewModel = {Pagina , dataCategory};
+    res.render("admin/product/add.hbs", viewModel);
   } catch (error) {
     console.error(error);
   }
@@ -47,10 +47,10 @@ productController.formAdd = async (req, res) => {
     const correct    = await product.save();
     if (correct) {
       req.flash("success", "Correcto :)");
-      res.redirect("/product/products");
+      res.redirect("/admin/product/products");
     } else {
       req.flash("error", "Incorrecto :(");
-      res.redirect("/product/products");
+      res.redirect("/admin/product/products");
     }
   } catch (error) {
     console.error(error);
@@ -63,9 +63,9 @@ productController.edit = async (req, res) => {
     const dataEdit     = await Product.findById({ _id: id }).lean();
     const dataCategory = await Category.find({}).lean();
     console.log("DATA EDIT : ", dataEdit);
-    let Page = 'Edit Product'
-    const viewModel = {dataEdit ,dataCategory , Page};
-    res.render("product/edit.hbs", viewModel);
+    let Pagina = 'Edit Product'
+    const viewModel = {dataEdit ,dataCategory , Pagina};
+    res.render("admin/product/edit.hbs", viewModel);
   } catch (error) {
     console.error(error);
   }
@@ -96,10 +96,10 @@ productController.update = async (req, res) => {
       if (producto) {
         await unlink(pathUpdate.resolve("./src/public/" + producto.path));
         req.flash("success", "Correcto Update :)");
-        res.redirect("/product/products");
+        res.redirect("/admin/product/products");
       } else {
         req.flash("error", "Incorrecto Update :(");
-        res.redirect("/product/products");
+        res.redirect("/admin/product/products");
       }
     }else  if(typeof req.file === 'undefined'){
       const product = await Product.findById({_id : id});
@@ -122,10 +122,10 @@ productController.update = async (req, res) => {
       });
       if(update){
         req.flash("success", "Correcto Update :)");
-        res.redirect("/product/products");
+        res.redirect("/admin/product/products");
       } else {
         req.flash("error", "Incorrecto Update :(");
-        res.redirect("/product/products");
+        res.redirect("/admin/product/products");
       }
     }
   } catch (error) {
@@ -141,10 +141,10 @@ productController.delete = async (req, res) => {
        console.log("producto delete: ", producto.path);
        await unlink(pathDelete.resolve("./src/public/" + producto.path));
        req.flash("success", "Correcto Delete :)");
-       res.redirect("/product/products");
+       res.redirect("/admin/product/products");
     } else {
        req.flash("error", "Incorrecto Delete :(");
-       res.redirect("/product/products");
+       res.redirect("/admin/product/products");
     }
   } catch (error) {
     console.error(error);

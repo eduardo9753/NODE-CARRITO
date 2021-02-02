@@ -6,16 +6,17 @@ const Page = require("../models/Page");
 adminController.index = async (req, res) => {
   try {
     const dataSlug = await Page.find({}).sort({ sorting: 1 }).lean();
-    /*const home = await Page.findOne({ slug : 'home'}).lean();*/
     console.log("DATA SLUG DB:", dataSlug);
-    res.render("page/pages.hbs", { dataSlug: dataSlug });
+    let Pagina = 'Paginas';
+    const viewModel = {dataSlug , Pagina}
+    res.render("admin/page/pages.hbs", viewModel);
   } catch (error) {
     console.error(error);
   }
 };
 
 adminController.form = (req, res) => {
-  res.render("page/add.hbs", { Page: "Form Page" });
+  res.render("admin/page/add.hbs", { Pagina: "Form Page" });
 };
 
 adminController.formAdd = async (req, res) => {
@@ -25,7 +26,7 @@ adminController.formAdd = async (req, res) => {
     let isTrue   = await Page.findOne({ slug: slugfind });
     if (isTrue) {
       req.flash("error", "Ya existe el Slug , Digite otro");
-      res.redirect("/page/pages");
+      res.redirect("/admin/page/pages");
     } else {
       const page   = new Page();
       page.title   = req.body.title;
@@ -35,10 +36,10 @@ adminController.formAdd = async (req, res) => {
       const corret = await page.save();
       if (corret) {
         req.flash("success", "Correcto :)");
-        res.redirect("/page/pages");
+        res.redirect("/admin/page/pages");
       } else {
         req.flash("error", "Hubo un error");
-        res.redirect("/page/pages/add");
+        res.redirect("/admin/page/pages/add");
       }
     }
   } catch (error) {
@@ -73,9 +74,9 @@ adminController.edit = async (req, res) => {
     const id = req.params.id;
     console.log("ID EDIT PAGE :", id);
     const dataEdit = await Page.findById({ _id: id }).lean();
-    let Page = 'Edit Page';
-    const viewModel = {dataEdit , Page};
-    res.render("page/edit.hbs", viewModel);
+    let Pagina = 'Edit Page';
+    const viewModel = {dataEdit , Pagina};
+    res.render("admin/page/edit.hbs", viewModel);
   } catch (error) {
     console.error(error);
   }
@@ -95,10 +96,10 @@ adminController.update = async (req, res) => {
     });
     if (correct) {
       req.flash("success", "Correcto :)");
-      res.redirect("/page/pages");
+      res.redirect("/admin/page/pages");
     } else {
       req.flash("error", "Hubo un error en la Actualizacion");
-      res.render("page/edit.hbs");
+      res.redirect("/admin/page/pages");
     }
   } catch (error) {
     console.error(error);
@@ -112,10 +113,10 @@ adminController.delete = async (req, res) => {
     const drop = await Page.findByIdAndDelete({ _id: id });
     if (drop) {
       req.flash("success", "Correcto Delete :)");
-      res.redirect("/page/pages");
+      res.redirect("/admin/page/pages");
     } else {
       req.flash("error", "Hubo un error en la Eiminacion");
-      res.redirect("/page/pages");
+      res.redirect("/admin/page/pages");
     }
   } catch (error) {
     console.error(error);

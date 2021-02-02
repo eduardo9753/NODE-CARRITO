@@ -1,23 +1,24 @@
 <div class="fondo img-fondo">
-   <h1 class="title-Page altura-Page">{{Page}}</h1>
+    <h1 class="title-Page altura-Page">{{Page}}</h1>
 </div>
-<section>
+<section class="mb-5">
     <div class="container">
         {{#if cart}}
-        <div class="flex-checkout">
-            <div class="col-md-4">
-                <h2 class="my-3 animacion-h1-product-view">Your Cart shopping</h2>
-                <p class="border-total-checkout lead">Total a Pagar : {{Total}} <i class='bx bx-dollar'></i></p>
-            </div>
-            <div class="">
-                <a href="/product/cart/clear" class="btn-clear-cart color-red clearcart">Clear All Cart</a>
-                <a href="" class="btn-buy-now color-yellow">Pay Now</a>
+        <div class="row">
+            <div class="flex-checkout">
+                <div class="col-md-4">
+                    <h2 class="my-3 animacion-h1-product-view">Your Cart shopping</h2>
+                    <p class="border-total-checkout lead">Total a Pagar : {{Total}} <i class='bx bx-dollar'></i></p>
+                </div>
+                <div class="">
+                    <a href="/product/cart/clear" class="btn-clear-cart color-red clearcart">Clear All Cart</a>
+                    <a href="" class="btn-buy-now color-yellow">Pay Now</a>
+                </div>
             </div>
         </div>
         {{/if}}
         <div class="row">
-            {{#each cart}}
-            <!--DATA CARRITO-->
+            {{#each cart}}<!--DATA CARRITO-->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -48,19 +49,17 @@
                 </div>
             </div>
             {{else}}
-            <div>
-                <!--VACIO-->
+            <div> <!--VACIO-->
                 <div class="col-md-5 mx-auto my-5">
                     <div class="card">
                         <div class="card-body">
                             <p class="text-center">Tu Carrito de compras Esta Vacio</p>
-                            <a href="/products/all" class="btn-client">Quiero Ir a Comprar</a>
+                            <a href="/products/all/1" class="btn-client">Quiero Ir a Comprar</a>
                         </div>
                     </div>
                 </div>
             </div>
-            {{/each}}
-            <!--EMD-DATA CARRITO-->
+            {{/each}} <!--EMD-DATA CARRITO-->
         </div>
     </div>
 </section>

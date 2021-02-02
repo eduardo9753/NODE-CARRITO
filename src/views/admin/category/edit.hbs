@@ -1,20 +1,19 @@
 <section>
     <div class="container">
-        <h2 class="text-center">Register Category</h2>
-        <div class="text-center mt-5"><a href="/category/categories" class="btn btn-primary">Back a all Categories</a></div>
+        <div class="text-center mt-5"><a href="/admin/category/categories" class="btn btn-primary">Back a all Categories</a></div>
         <br><br>
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/category/categories/addForm" method="POST">
+                        <form action="/admin/category/categories/update/{{dataEdit._id}}" method="POST">
                             <div class="form-group my-3">
                                 <label for="">Title</label>
-                                <input type="text" name="title" class="form-control" id="">
+                                <input type="text" name="title" value="{{dataEdit.title}}" class="form-control" id="">
                             </div>
                              <div class="form-group my-3">
                                 <label for="">Slug</label>
-                                <input type="text" name="slug" class="form-control" id="">
+                                <input type="text" name="slug" value="{{dataEdit.slug}}" class="form-control" id="">
                             </div>
                              <div class="form-group my-3">
                                 <input type="submit" class="btn btn-success" value="Register" name="" id="">

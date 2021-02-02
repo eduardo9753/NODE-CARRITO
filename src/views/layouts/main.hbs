@@ -20,25 +20,20 @@
   <!--CSS ADMIN-->
   <link rel="stylesheet" href="/css/admin.css">
   <!--TITLES OF THE PAGES-->
-  <title>Page : {{Page}}</title>
+  <title>Page : {{Pagina}}</title>
 </head>
 
 <body>
   <main>
     <div>
-      {{#if user}}
-      <!--NAV USER --> {{>userNav}}<!--END-NAV-->
-      {{else}}
-      <!--NAV CLIENTE -->{{>clienteNav}}<!-- END-NAV-->
-      {{/if}}      
-      
-      <!--MESSAGES-->
-        <div class="container">
-          {{>errors}}
-          {{>success}}
-        </div>
-      <!--END-MESSAGES-->
-      
+      {{#if user}}<!--NAV USER --> {{>userNav}}<!--END-NAV-->
+      {{else}}<!--NAV CLIENTE -->{{>clienteNav}}<!-- END-NAV-->{{/if}}
+
+      <div class="container"><!--MESSAGES-->
+        {{>errors}}
+        {{>success}}
+      </div><!--END-MESSAGES-->
+
       <!--BODY-->{{{ body }}}<!--END-BODY-->
       <!--FOOTER-->{{>footer}}<!--EN-FOOTER-->
     </div>

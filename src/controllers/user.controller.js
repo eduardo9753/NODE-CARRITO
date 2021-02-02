@@ -35,4 +35,6 @@ userController.logout = (req, res) => {
     req.flash('success', 'Good Bye User!....:)');
     res.redirect('/user/signin');
 }
+
+
 module.exports = userController;

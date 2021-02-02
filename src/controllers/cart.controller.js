@@ -47,7 +47,7 @@ cartController.addCart = async (req , res) =>{//AÑADIENDO PRODUCTOS
     }
     console.log('PRODUCT IN MY CART: ' , req.session.cart);
     req.flash("success", "Product Added to Cart .....");
-    res.redirect('/products/all');
+    res.redirect('/products/all/1');
  } catch (error) {
    console.log(error);
  }
@@ -57,18 +57,18 @@ cartController.addCart = async (req , res) =>{//AÑADIENDO PRODUCTOS
 cartController.checkoutCart = (req, res) => {
   try {
       if(req.session.cart && req.session.cart === 0){
-          res.render('checkout.hbs' , {Page : 'CheckOut'});                     //render solo te pinta la pantalla
-      }else if(typeof req.session.cart === 'undefined'){  //redirect va a la ruta y hace el proceso de
-          res.render('checkout.hbs' , {Page : 'CheckOut'});
+          res.render('checkout.hbs' , {Pagina : 'CheckOut'}); //render solo te pinta la pantalla
+      }else if(typeof req.session.cart === 'undefined'){      //redirect va a la ruta y hace el proceso de
+          res.render('checkout.hbs' , {Pagina : 'CheckOut'});
       } else{
           const cart = req.session.cart;
-          const Page = 'CheckOut';
+          const Pagina = 'CheckOut';
           let  Total = 0;
           for(let indice=0;indice<cart.length;indice++){
               Total = Total + cart[indice].total ;
           }
           console.log('DATA CART CHECKOUT: ', cart);
-          const viewModel = {cart , Total , Page };
+          const viewModel = { cart , Total , Pagina };
           res.render('checkout.hbs' ,viewModel);
       }
   } catch (error) {

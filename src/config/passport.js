@@ -4,7 +4,7 @@ const LocaStrategy = require('passport-local').Strategy;
 const User         = require('../models/User');
 
 
-//SIGNIN LOGIN USER(2)
+//LOGEO DE USUARIOS YA REGISTRADOS(2)
 passport.use('local.signin' , new LocaStrategy({
     usernameField : 'email' ,   //caja input
     passwordField : 'password', //caja input
@@ -21,11 +21,11 @@ passport.use('local.signin' , new LocaStrategy({
         } else {
             return done(null , false , { message : 'PASSWORD INCORRECT...'});
         }
-    }
+    } 
 }));
 
 
-//AUTHENTICATE REGISTER SIGNUP (1)
+//REGISTRANDO A UN USUARIO (1)
 passport.use('local.signup' , new LocaStrategy({
     usernameField : 'username',  //caja input
     passwordField : 'password',  //caja imput

@@ -1,7 +1,7 @@
 <section>
     <div class="container">
         <h2>Producto</h2>
-        <div class="text-center mt-5"><a href="/product/products/add" class="btn btn-primary">Add new Product</a></div>
+        <div class="text-center mt-5"><a href="/admin/product/products" class="btn btn-primary">Add new Product</a></div>
         <br><br>
         <div class="row">
             <div class="card">
@@ -32,10 +32,10 @@
                                     <td>{{image}}</td>
                                     <td><img src="/{{path}}" class="imgProduct" alt="My Image"></td>
                                     <td>
-                                        <a href="/product/products/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                                        <a href="/admin/product/products/edit/{{_id}}" class="btn btn-warning">Edit</a>
                                     </td>
                                     <td>
-                                      <form action="/product/products/delete/{{_id}}?_method=DELETE" method="POST">
+                                      <form action="/admin/product/products/delete/{{_id}}?_method=DELETE" method="POST">
                                          <input type="submit" value="Delete" class="btn btn-danger">
                                       </form>
                                     </td>

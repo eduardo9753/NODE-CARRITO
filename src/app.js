@@ -22,7 +22,12 @@ const categoryRouter  = require('./routers/category.router');
 const productRouter   = require('./routers/product.router');
 const cartRouter      = require('./routers/cart.router');
 const userRouter      = require('./routers/user.router');
+const adminRouter     = require('./routers/admin.router');
+const { isAuthenticated } = require('./helpers/auth') ;
+const { firtPagina , paginationProduct , paginationCateries,lastPagina } = require('./helpers/handlebars');
 require('./database/database');
+require('./config/passport');
+
 
 //SETTING SERVER
 app.set('port' , process.env.PORT || 5009);
@@ -35,7 +40,7 @@ app.engine('.hbs' , exhbs({
     layoutsDir    : path.join(app.get('views') , 'layouts'),
     partialsDir   : path.join(app.get('views') , 'partials'),
     extname       : '.hbs',
-    helpers       : require('./helpers/auth') 
+    helpers       : { isAuthenticated , firtPagina , paginationProduct , paginationCateries , lastPagina } //no es necesario llamar esta funcion
 }));
 app.set('view engine' , '.hbs');
 
@@ -55,7 +60,6 @@ app.use(uploadProduct);
 
 
 //SSESION Y FLASH
-require('./config/passport');
 app.use(session({
     secret : process.env.SESSION_SECRET || 'secret' ,
     resave : false ,
@@ -65,11 +69,14 @@ app.use(session({
 app.use(passport.initialize()); //INICIANDO PASSPORT
 app.use(passport.session());    //INICIANDO PASSPORT
 app.use(flash());
+
+
+//VARIABLES GLOBALES
 app.use((req, res, next) => {
-    res.locals.success = req.flash('success');
-    res.locals.error   = req.flash('error');
-    res.locals.cart    = req.session.cart;  //VARIABLE QUE ALMACENA MIS PRODUCTOS
-    res.locals.user    = req.user || null;
+    res.locals.success  = req.flash('success');
+    res.locals.error    = req.flash('error');
+    res.locals.cart     = req.session.cart;  //VARIABLE QUE ALMACENA MIS PRODUCTOS
+    res.locals.user     = req.user || null;  //GUARDAMOS AL USER EN SESSION
     next();
 })
 
@@ -81,6 +88,8 @@ app.use('/' , categoryRouter);
 app.use('/' , productRouter);
 app.use('/' , cartRouter);
 app.use('/' , userRouter);
+app.use('/' , adminRouter);
+
 
 //STATIC FILR
 app.use(express.static(path.join(__dirname , 'public')))
