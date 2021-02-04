@@ -12,6 +12,14 @@ indexController.index =  (req , res) => {
    }
 }
 
+indexController.about = (req , res) => {
+   try {
+      res.render('about.hbs' , {Pagina : 'About As'});
+   } catch (error) {
+      console.log(error);
+   }
+}
+
 indexController.allProducts = async (req , res) => {
    try {
       let verPorPagina = 9;
@@ -55,6 +63,7 @@ indexController.productsByCategory = async (req , res) => {
          products   : products,
          current    : pagina,
          paginas    : Math.ceil(total / verPorPagina),
+         slug       : slug,
          Pagina ,
       };
       console.log('DATA PRODUCT BY CATEGORY: ' , categories);

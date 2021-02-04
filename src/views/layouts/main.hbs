@@ -26,16 +26,23 @@
 <body>
   <main>
     <div>
-      {{#if user}}<!--NAV USER --> {{>userNav}}<!--END-NAV-->
-      {{else}}<!--NAV CLIENTE -->{{>clienteNav}}<!-- END-NAV-->{{/if}}
+    
+    {{#if user}}
+       {{>userNav}}
+    {{else}}
+       {{>clienteNav}}
+    {{/if}}
 
-      <div class="container"><!--MESSAGES-->
-        {{>errors}}
-        {{>success}}
-      </div><!--END-MESSAGES-->
+    <div class="container"><!--MESSAGES-->
+      {{>errors}}
+      {{>success}}
+    </div><!--END-MESSAGES-->
 
-      <!--BODY-->{{{ body }}}<!--END-BODY-->
-      <!--FOOTER-->{{>footer}}<!--EN-FOOTER-->
+    <main>
+    <!--BODY--> {{{ body }}}<!--END-BODY-->
+    <!--FOOTER-->{{>footer}}<!--EN-FOOTER-->
+    </main>
+   
     </div>
   </main>
 

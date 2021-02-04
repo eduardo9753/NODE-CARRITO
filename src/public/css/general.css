@@ -8,6 +8,10 @@
   width: 110px;
   height: 110px;text-align: center;}
 
+.align-center { align-items: center;}
+
+.img-view-product {height: 450px;}
+
 img{ width: 100%; height: 100%; object-fit: cover; vertical-align: middle;}
 a{text-decoration: none;}
 ul{list-style: none;}

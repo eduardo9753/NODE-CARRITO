@@ -24,10 +24,9 @@ const cartRouter      = require('./routers/cart.router');
 const userRouter      = require('./routers/user.router');
 const adminRouter     = require('./routers/admin.router');
 const { isAuthenticated } = require('./helpers/auth') ;
-const { firtPagina , paginationProduct , paginationCateries,lastPagina } = require('./helpers/handlebars');
+const { firtPagina , paginationProduct , paginationCategories , lastPagina } = require('./helpers/handlebars');
 require('./database/database');
 require('./config/passport');
-
 
 //SETTING SERVER
 app.set('port' , process.env.PORT || 5009);
@@ -39,8 +38,8 @@ app.engine('.hbs' , exhbs({
     defaultLayout : 'main',
     layoutsDir    : path.join(app.get('views') , 'layouts'),
     partialsDir   : path.join(app.get('views') , 'partials'),
-    extname       : '.hbs',
-    helpers       : { isAuthenticated , firtPagina , paginationProduct , paginationCateries , lastPagina } //no es necesario llamar esta funcion
+    extname       : '.hbs',            
+    helpers       : { isAuthenticated , firtPagina , paginationProduct , paginationCategories , lastPagina } 
 }));
 app.set('view engine' , '.hbs');
 

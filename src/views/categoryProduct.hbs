@@ -1,5 +1,5 @@
 <div class="fondo fondo-product">
-    <h1 class="title-Page altura-Page">{{Page}}</h1>
+    <h1 class="title-Page altura-Page">{{Pagina}}</h1>
 </div>
 <section class="mb-5">
     <!--Categoria generales-->
@@ -12,8 +12,8 @@
                         <h2 class="my-5">Categories</h2>
                         <ul class="">
                             <li><a href="/products/all/1">All Products</a></li>
-                            {{#each categories}}
-                            <li><a href="/products/category/{{slug}}">{{title}}</a></li>
+                            {{#each categories}}  
+                            <li><a href="/products/category/{{slug}}/1">{{title}}</a></li>
                             {{/each}}
                         </ul>
                     </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h3 class="h3-product-all">{{title}}</h3>
-                                    <p class="price-product-all">{{price}} <i class='bx bx-dollar'></i></p>
+                                    <p class="price-product-all">Kilo : {{price}} <i class='bx bx-dollar'></i></p>
                                     <p class="category-product-all">Category: {{category}}</p>
                                 </div>
                                 <div class="card-footer">
@@ -48,7 +48,7 @@
                     <nav class="Page navigation example">
                         <ul class="pagination">
                             {{{firtPagina current}}}
-                            {{{paginationCateries current paginas}}}
+                            {{{paginationCategories current paginas slug}}}
                             {{{lastPagina current paginas}}}
                         </ul>
                     </nav>

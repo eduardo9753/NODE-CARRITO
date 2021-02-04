@@ -1,5 +1,5 @@
 <div class="fondo fondo-product">
-   <h1 class="title-Page altura-Page">{{Page}}</h1>
+   <h1 class="title-Page altura-Page">{{Pagina}}</h1>
 </div>
 <section class="mb-5">
     <div class="container">
@@ -14,7 +14,7 @@
                             <h3 class="h3-product-all">{{product.title}}</h3>
                         </div>
                         <div class="card-body">
-                            <p class="price-product-all">{{product.price}} <i class='bx bx-dollar'></i></p>
+                            <p class="price-product-all">Kilo : {{product.price}} <i class='bx bx-dollar'></i></p>
                             <p class="category-product-all">Category: {{product.category}}</p>
                             <p class="description-product-view">{{product.desc}}</p>
                         </div>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col-md-7">
-                <img src="/{{product.path}}" alt="">
+                <img src="/{{product.path}}" class="img-view-product" alt="">
             </div>
         </div>
     </div>

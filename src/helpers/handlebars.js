@@ -2,7 +2,7 @@ const hbshelpers = {};
 
 //FIRT PAGE
 hbshelpers.firtPagina = (current) => {
-    if (current) {
+    if (current == 1) {
         let li = '<li class="page-item"><a class="page-link" href="#">Firt Page</a></li>'
         return li;
     } else {
@@ -38,7 +38,7 @@ hbshelpers.paginationProduct = (current, paginas) => {
 
 
 //PAGINATION CATEGORI
-hbshelpers.paginationCateries = (current, paginas) => {
+hbshelpers.paginationCategories = (current, paginas, slug) => {
     let list = [];
     let i = (Number(current) > 5 ? Number(current) - 4 : 1);
     if (i !== 1) {
@@ -50,7 +50,7 @@ hbshelpers.paginationCateries = (current, paginas) => {
             let li = '<li class="page-item"><a class="page-link" href="' + i + '">' + i + '</a></li>';
             list.push(li);
         } else {
-            let li = '<li class="page-item"><a class="page-link" href="//' + i + '">' + i + '</a></li>';
+            let li = '<li class="page-item"><a class="page-link" href="/products/category/' + slug + '/' + i + '">' + i + '</a></li>';
             list.push(li);
         } if (i == Number(current) + 4 && i < paginas) {
             let li = '<li class="page-item"><a class="page-link" href="#">.......</a></li>';
