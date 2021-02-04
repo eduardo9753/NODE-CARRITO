@@ -7,7 +7,7 @@
         <div class="row">
             <div class="flex-checkout">
                 <div class="col-md-4">
-                    <h2 class="my-3 animacion-h1-product-view">Your Cart shopping</h2>
+                    <h2 class="my-3 animacion-h1-product-view">Your shopping Cart</h2>
                     <p class="border-total-checkout lead">Total a Pagar : {{Total}} <i class='bx bx-dollar'></i></p>
                 </div>
                 <div class="">
@@ -18,7 +18,8 @@
         </div>
         {{/if}}
         <div class="row">
-            {{#each cart}}<!--DATA CARRITO-->
+            {{#each cart}}
+            <!--DATA CARRITO-->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -49,7 +50,7 @@
                 </div>
             </div>
             {{else}}
-            <div> <!--VACIO-->
+            <div><!--VACIO-->
                 <div class="col-md-5 mx-auto my-5">
                     <div class="card">
                         <div class="card-body">
