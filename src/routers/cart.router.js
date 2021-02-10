@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-//AUTHENTICATED
+//AUTHENTICATED USER
 const { isAuthenticated } = require('../helpers/auth');
 
 //CONTROLADOR CART

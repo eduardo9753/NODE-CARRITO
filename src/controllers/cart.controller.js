@@ -3,7 +3,7 @@ const cartController = {};
 //MODEL PRODUCT
 const Product = require('../models/Products');
 
-cartController.addCart = async (req , res) =>{//AÑADIENDO PRODUCTOS
+cartController.addCart = async (req , res) =>{
  try {
     const slug = req.params.slug;    //parametro de la url del "req"
     const product = await Product.findOne( {slug : slug }).lean();
@@ -12,35 +12,35 @@ cartController.addCart = async (req , res) =>{//AÑADIENDO PRODUCTOS
         let cantidad = 1;            //CANTIDAD INICIAL POR SER PRIMER PRODUCTO
         req.session.cart = [] ;      //ARREGLO VACIO ASIGNADO AL LA VARIABLE CART
         req.session.cart.push({      //EN MI VARIABLE CART GLOBAL LE ENPUJAMOS LOS DATOS DE CADA PRODUCTO
-        title : slug ,               //AL VALOR TITLE LE PASO EL VALO SLUG
-        cantidad : cantidad ,        //AL VALOR CANTIDAD LE PASO LA VARIABLE CANTIDAD
-        price : parseFloat(product.price).toFixed(2),//AL VALOR PRECIO LE DOY EL PRECIO
-        image : product.image ,      //AL VALOR IMAGE LE DOY LA IMAGE DE LA BD
-        path  : product.path  ,      //AL VALOR PATH LE DOY LA RUTA DE LA IMAGEN DE BD '/PUBLIC/nobreDelaImg' 
-        subtotal : parseFloat(product.price).toFixed(2)*cantidad,//OPERACION PARA SACAR LO QUE VA PAGAR
+        title : slug ,               
+        cantidad : cantidad ,        
+        price : parseFloat(product.price).toFixed(2),
+        image : product.image ,     
+        path  : product.path  ,      
+        subtotal : parseFloat(product.price).toFixed(2)*cantidad,
         total : parseFloat(product.price).toFixed(2)*cantidad
       });
     }else{
       const cart = req.session.cart; //CAPTURAMOS LA VARIABLE CART CON DATOS YA EXISTENTES
-      let newItem =true;             //BANDERA DEL NUEVO ELEMENTO
+      let newItem =true;             //BANDERA DEL NUEVO ITEM
       for(let indice=0 ; indice<cart.length ; indice++ ){//RECORRIDO DE CART PRODUCTO
-          if(cart[indice].title == slug){ //SI EL PRODUCTO ES EL MISMO QUE MANDA COMO PARAMETRO
-             cart[indice].cantidad++;//LE SUMAMOS LA CANTIDAD
-             newItem = false;        //NUEVO VALOR ES FALSE
-             cart[indice].subtotal = (cart[indice].cantidad * cart[indice].price),//ACTUAZAMOS EL PRECIO EN FUNCION
+          if(cart[indice].title == slug){
+             newItem = false;        //NUEVO ITEM ES FALSE 
+             cart[indice].cantidad++;
+             cart[indice].subtotal = (cart[indice].cantidad * cart[indice].price),
              cart[indice].total    = (cart[indice].subtotal)
-             break;                  //ROMPEMOS LA CICLO                      //DELA POSICION "indice"  
+             break;                  
           }
       }
-      if(newItem){                   //SI EL NUEVO VALOR ES TRUE : QUIERE DECIR QUE ES OTRO 
-             let cantidad = 1;       //CANTIDAD INICIAL POR SER PRIMER PRODUCTO
+      if(newItem){                   //SI EL NUEVO VALOR ES TRUE : NUEVO ITEM
+             let cantidad = 1;       //CANTIDAD INICIAL DEL SIGUIENTE PRODUCTO
              cart.push({             //CARGAMOS EL NUEVO PRODUCTO AL CART
              title : slug,           //LE DOY EL SLUG
-             cantidad : 1 ,          //LE DOY LA CANTIDAD INICIAL
-             price : parseFloat(product.price).toFixed(2),//LE DOY EL PRECIO
-             image : product.image , //AL VALOR IMAGE LE DOY LA IMAGE DE LA BD
-             path  : product.path ,  //AL VALOR PATH LE DOY LA RUTA DE LA IMAGEN DE BD '/PUBLIC/nobreDelaImg'
-             subtotal : parseFloat(product.price).toFixed(2)*cantidad,//OPERACION PARA SACAR LO QUE VA PAGAR
+             cantidad : cantidad ,        
+             price : parseFloat(product.price).toFixed(2),
+             image : product.image , 
+             path  : product.path ,  
+             subtotal : parseFloat(product.price).toFixed(2)*cantidad,
              total : parseFloat(product.price).toFixed(2)*cantidad
          })
       }
@@ -94,7 +94,7 @@ cartController.updateCart = (req, res) => {
                       cart[indice].cantidad--; //LE SUMAMOS LA CANTIDAD
                       cart[indice].subtotal = (cart[indice].cantidad * cart[indice].price),//ACTUAZAMOS EL PRECIO EN FUNCION
                       cart[indice].total    = (cart[indice].subtotal)
-                      if(cart[indice].cantidad < 1){
+                      if(cart[indice].cantidad < 1){//SI ES MENOR A 1 , ELIMINAMOS
                           cart.splice(indice , 1);
                       }
                       break;                   //ROMPEMOS LA CICLO  
